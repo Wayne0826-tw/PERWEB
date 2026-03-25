@@ -86,6 +86,9 @@
             <div class="hidden md:flex space-x-8 text-sm font-bold">
                 <a href="#home" class="text-indigo-600 hover:text-pink-600 transition">首頁</a>
                 <a href="#features" class="text-slate-600 hover:text-indigo-600 transition">我的領域</a>
+                <a href="Colab.html" class="text-emerald-600 hover:text-emerald-700 transition flex items-center gap-1">
+                    <i data-lucide="trending-up" class="w-4 h-4"></i>持續成長
+                </a>
                 <a href="#assignment" class="text-slate-600 hover:text-indigo-600 transition">交作業</a>
                 <a href="#contact" class="text-slate-600 hover:text-indigo-600 transition">聯絡我</a>
             </div>
@@ -97,6 +100,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white/95 p-6 space-y-4 border-b">
             <a href="#home" class="block font-bold text-slate-600" onclick="toggleMenu()">首頁</a>
             <a href="#features" class="block font-bold text-slate-600" onclick="toggleMenu()">我的領域</a>
+            <a href="Colab.html" class="block font-bold text-emerald-600" onclick="toggleMenu()">持續成長</a>
             <a href="#assignment" class="block font-bold text-slate-600" onclick="toggleMenu()">交作業</a>
             <a href="#contact" class="block font-bold text-slate-600" onclick="toggleMenu()">聯絡我</a>
         </div>
@@ -111,15 +115,17 @@
             <h1 class="text-7xl md:text-9xl font-black mb-12 tracking-tighter leading-none">
                 我是 <span class="gradient-text">陳葦恩</span>
             </h1>
-            <!-- 保持空白描述區 -->
-            <p class="text-lg md:text-xl text-slate-500 mb-12 max-w-2xl mx-auto font-medium"></p>
+            <p class="text-lg md:text-xl text-slate-500 mb-12 max-w-2xl mx-auto font-medium">
+                歡迎來到我的個人工作空間，在這裡記錄成長並實現創意。
+            </p>
             
             <div class="flex flex-wrap justify-center gap-6">
                 <a href="#assignment" class="bg-indigo-600 text-white px-12 py-5 rounded-2xl font-black text-lg hover:bg-pink-600 transition-all shadow-xl shadow-indigo-100 active:scale-95">
                     立即交作業
                 </a>
-                <a href="#features" class="bg-white text-slate-900 px-12 py-5 rounded-2xl font-black text-lg border border-slate-200 hover:bg-slate-50 transition-all active:scale-95">
-                    關於更多
+                <a href="Colab.html" class="bg-white text-emerald-600 px-12 py-5 rounded-2xl font-black text-lg border-2 border-emerald-100 hover:bg-emerald-50 transition-all active:scale-95 flex items-center gap-2">
+                    <i data-lucide="rocket" class="w-5 h-5"></i>
+                    查看成長藍圖
                 </a>
             </div>
         </div>
@@ -144,13 +150,16 @@
                 <h3 class="text-2xl font-black mb-4 text-pink-900">視覺設計</h3>
                 <p class="text-slate-500 leading-relaxed font-medium">對色彩與排版充滿熱情，致力於創造讓人眼睛一亮的視覺風格。</p>
             </div>
-            <!-- 翡翠色塊 -->
-            <div class="glass-card p-10 rounded-[3rem] hover:shadow-2xl hover:shadow-emerald-100 transition-all group border-emerald-100">
+            <!-- 翡翠色塊 - 連結至 Colab.html -->
+            <div class="glass-card p-10 rounded-[3rem] hover:shadow-2xl hover:shadow-emerald-100 transition-all group border-emerald-100 border-2">
                 <div class="w-16 h-16 bg-emerald-500 text-white rounded-2xl flex items-center justify-center mb-8 rotate-6 group-hover:rotate-0 transition-transform shadow-lg shadow-emerald-100">
-                    <i data-lucide="smile" class="w-8 h-8"></i>
+                    <i data-lucide="trending-up" class="w-8 h-8"></i>
                 </div>
                 <h3 class="text-2xl font-black mb-4 text-emerald-900">持續成長</h3>
-                <p class="text-slate-500 leading-relaxed font-medium">不斷探索新領域，並享受每一個學習新事物帶來的樂趣。</p>
+                <p class="text-slate-500 leading-relaxed font-medium mb-6">不斷探索新領域，記錄學習過程中的每一個里程碑。</p>
+                <a href="Colab.html" class="inline-flex items-center gap-2 text-emerald-600 font-black hover:underline">
+                    查看我的藍圖 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -164,7 +173,6 @@
             </div>
             
             <div class="glass-card p-8 md:p-14 rounded-[3.5rem] shadow-2xl shadow-indigo-50 border border-white relative overflow-hidden">
-                <!-- 彩色裝飾邊緣 -->
                 <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-500 via-pink-500 to-amber-500"></div>
 
                 <form id="submissionForm" class="space-y-10">
@@ -260,16 +268,13 @@
     </footer>
 
     <script>
-        // 初始化 Lucide 圖標
         lucide.createIcons();
 
-        // 行動選單切換
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
 
-        // 更新檔案顯示名稱
         function updateFileName(input) {
             const display = document.getElementById('file-name-display');
             const text = document.getElementById('file-name-text');
@@ -283,13 +288,11 @@
             }
         }
 
-        // 模擬表單提交
         document.getElementById('submissionForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = this.querySelector('button[type="submit"]');
             const original = btn.innerHTML;
             
-            // 載入狀態
             btn.disabled = true;
             btn.innerHTML = `<i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i><span>正在飛快傳送中...</span>`;
             lucide.createIcons();
@@ -298,14 +301,12 @@
                 const toast = document.getElementById('successMessage');
                 toast.classList.remove('hidden');
                 
-                // 重置表單與按鈕
                 btn.disabled = false;
                 btn.innerHTML = original;
                 lucide.createIcons();
                 this.reset();
                 document.getElementById('file-name-display').classList.add('hidden');
 
-                // 4秒後隱藏成功提示
                 setTimeout(() => {
                     toast.classList.add('hidden');
                 }, 4000);
@@ -314,4 +315,3 @@
     </script>
 </body>
 </html>
-
